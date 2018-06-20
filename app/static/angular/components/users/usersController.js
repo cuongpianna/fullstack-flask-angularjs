@@ -91,6 +91,11 @@ var usersController = app.controller('usersController', ['$scope', '$http','$sta
 
     }
 
+    $scope.selectedUser = function (user) {
+        $scope.thisUser = user;
+        console.log('user' +user);
+    }
+
 }]);
 
 
