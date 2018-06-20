@@ -1,0 +1,97 @@
+<div class="row">
+    <h3 class="col-2">All users</h3>
+    <div class="col-8">
+        <div class="alert alert-info alert-dismissible text-center" role="alert" ng-if="info" style="transition: 1s">
+            <button type="button" class="close" aria-label="Close"><span aria-hidden="true" ng-click="clearInfo()">&times;</span></button> {{info}}
+        </div>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block">Add user</button>
+        <button class="btn btn-danger" ng-click="deleteMultilUser()"> Delete all</button>
+    </div>
+</div>
+<div class="row" style="min-height: 300px">
+    <div class="col-8 offset-2">
+        <table class="table" style="background: white; transition: 1s">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" ng-model="selectall"></th>
+                    <th>Tài khoản</th>
+                    <th>Email</th>
+                    <th>Ngày sinh</th>
+                    <th>Ảnh</th>
+                    <th>Ngày lập</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody ng-init="getAllUsers()">
+                <tr ng-repeat="u in users track by $index">
+                    <td><input type="checkbox" ng-checked="selectall" id="{{u.id}}" class="userselect" data-id="{{u.id}}"><span style="display: none"></span></td>
+                    <td>{{u.username}}</td>
+                    <td>{{u.email}}</td>
+                    <td> {{u.date_of_birth}}</td>
+                    <td><img src="" ng-src="{{u.avartar}}" alt="" style="width: 50px"></td>
+                    <td>{{u.timestamp}}</td>
+                    <td>
+                        <a href=""><i class="fa fa-pencil"></i></a>
+                        <a href=""><i class="fa fa-ban" aria-hidden="true" style="color:red" ng-click="deleteUser(u)"></i></a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 offset-4">
+        <user-pagi class="text-center">ssss</user-pagi>
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add user</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form action="" method="post" enctype="multipart/form-data" name="form">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div>
+                        <label for="">Username:</label>
+                        <input type="text" class="form-control" placeholder="Enter your username" ng-model="user.username" name="username" required>
+                        <span ng-show="form.username.$error.required" style="color:red;font-size: 13px;margin-left: 5px">Username is required</span>
+                    </div>
+                    <div>
+                        <label for="">Email:</label>
+                        <input type="email" class="form-control" placeholder="Enter your email" ng-model="user.email" name="email" required>
+                        <span ng-show="form.email.$error.required" style="color:red;font-size: 13px;margin-left: 5px">Email is required</span>
+                        <span ng-show="form.email.$error.email" style="color:red;font-size: 13px;margin-left: 5px">Email is not valid</span>
+                    </div>
+                    <div>
+                        <label for="">Password</label>
+                        <input type="password" class="form-control" placeholder="Enter your password" ng-model="user.password" name="password" required>
+                        <span ng-show="form.password.$error.required" style="color:red;font-size: 13px;margin-left: 5px">Password is required</span>
+                    </div>
+                    <div>
+                        <label for="">Avartar</label>
+                        <input ngf-select type="file" class="form-control" ng-model="user.avartar" name="avartar" multiple id="avartar" required>
+                        <span ng-show="form.avartar.$error.required" style="color:red;font-size: 13px;margin-left: 5px">Avartar is required</span>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="addUser()" data-dismiss="modal" ng-disabled="form.username.$error.required && form.email.$error.email && form.email.$error.required && form.password.$error.required">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

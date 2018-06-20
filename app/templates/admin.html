@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--Navbar-->
+    <!--<div ng-include="'/static/angular/shared/navbar/navbar.html'"></div>-->
+    {% include '_include/_navbar.html' %}
+
+    <div class="container-fluid" style="margin-top: 40px">
+        <div class="row">
+            <div class="col-2 content-left" id="sidebar" style="float: left ;padding-left:0">
+                <ul class="nav">
+                    <li class="nav-item nav-profile"></li>
+                    <li class="nav-item"><a ui-sref="admin" class="nav-link"><i class="fa fa-desktop"></i>Dashboard</a></li>
+                    <li class="nav-item"><a ui-sref="users" class="nav-link"><i class="fa fa-user"></i>Quản lý tài khoản</a></li>
+                    <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-book"></i>Quản lý sách</a></li>
+                    <li class="nav-item"><a href="" class="nav-link"><i></i>Thống kê</a></li>
+                </ul>
+            </div>
+            <div class="col-10 content-right">
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
+
+    <!-- needed for angular material -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- angular material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+    <!--<script src="app/assets/js/pagination.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.0/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.0/angular-resource.js"></script>
+
+    <script src="{{url_for('static',filename='angular/app.module.js')}}"></script>
+    <script src="{{url_for('static',filename='angular/app.config.js')}}"></script>
+
+    <script src="{{url_for('static',filename='angular/components/dashboard/dashboardController.js')}}"></script>
+    <script src="{{url_for('static',filename='angular/components/users/usersService.js')}}"></script>
+    <script src="{{url_for('static',filename='angular/components/users/usersController.js')}}"></script>
+    <!--<script src="app/components/users/usersController.js"></script>-->
+</body>
+
+</html>

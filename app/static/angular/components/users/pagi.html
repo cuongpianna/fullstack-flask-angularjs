@@ -1,0 +1,15 @@
+<ul class="pagination">
+    <li ng-show="offset != 1">
+        <a href="" ng-click="getAllUsers(1)"> «« </a>
+    </li>
+    <li ng-show="offset != 1">
+        <a href="" ng-click="getAllUsers(offset-1)"> Prev </a>
+    </li>
+
+    <li ng-repeat="i in range" ng-class="{active : offset == i }">
+        <a href="" style="height: 25px;width: 25px;display: block;background: #eee" ng-click="getAllUsers(i,limit)">{{i}}</a>
+    </li>
+
+    <li ng-if="offset <= lastpage"><a href="javascript:void(0)" ng-click="getAllUsers(offset+1)">Next </a></li>
+    <li ng-show="offset <= lastpage"><a href="javascript:void(0)" ng-click="getCourse(totalPages)">   »»</a></li>
+</ul>
