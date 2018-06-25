@@ -29,6 +29,8 @@ def create_app(config_name):
     api.add_resource(UserResource,'/users/<id>')
 
     from .admin import users as users_admin
+    from .auth import auth as auth_admin
     app.register_blueprint(users_admin)
+    app.register_blueprint(auth_admin)
 
     return app
